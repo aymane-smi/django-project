@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+
+{% include 'parts/upbar.html' %}
+{% include 'parts/Map.html' %}
+    <div class="content-wrapper">
+    <div class="container-fluid">
+<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Table Des Parc</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nom de parc</th>
+                  <th>Gestionnaire</th>
+                  <th>adress</th>
+                <th>nombre de machine  </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for parcL in list_parc %}
+                <tr>
+                  <td> {{parcL.id}} </td>
+                <td> {{parcL.nom_parc}} </td>
+                <td> {{parcL.user.first_name}} {{parcL.user.last_name}}  </td>
+                 <td> {{parcL.adresse}} </td>
+               <td> {{parcL.nbr_machine}} </td>
+                </tr> 
+                {% endfor %}  
+              </tbody>
+            </table>
+            <div class="card-footer small text-muted"></div>
+          </div>
+        </div>
+        </div>
+</div>
+{% endblock  %}

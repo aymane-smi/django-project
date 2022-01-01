@@ -1,0 +1,32 @@
+ .up1 {
+   background-color: black;
+   width: 100%;
+   height: 60px;
+   text-align: center;
+   padding-bottom: 10px;
+   color: whitesmoke;
+   padding-top: 10px;
+ }
+
+ .up2 {
+   background-color: black;
+   width: 100%;
+   height: 60px;
+   text-align: center;
+   padding-bottom: 10px;
+   color: whitesmoke;
+   padding-top: 10px;
+ }
+
+ .upside {
+   display: grid;
+   grid-gap: 50px;
+   grid-template-columns: 1fr 1fr;
+ }
+
+ .upside2 {
+   width: 400px;
+   float: right;
+   text-align: left;
+   padding-left: 20px;
+ }

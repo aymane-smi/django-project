@@ -1,0 +1,60 @@
+ <div class="content-wrapper">
+    <div class="container-fluid">
+ <div class="row">
+        <div class="col-lg-7">
+          
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-map-marked"></i> location des parc </div>
+            <div class="card-body">
+              <div class="row">
+                {{map|safe}}
+                </div>
+              </div>
+              <div class="card-footer small text-muted"></div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+          <div class="card mb-2">
+            <div class="card-header">
+            <i class="far fa-bookmark"></i> Dictionnaire</div>
+            <div class="card-body">
+            <p> <i class="fas fa-map-marker-alt text-danger"></i>  Marker pour les parcs en demande de suppression </p>
+            <p><i class="fas fa-map-marker-alt text-warning"></i>  Marker pour les parcs a des erreurs </p>
+            <p> <i class="fas fa-map-marker-alt text-primary"></i>  Marker pour les parcs en etat Normale </p>
+            </div>
+            <div class="card-footer small text-muted"></div>
+            
+          </div>
+           <div class="card mb-6" style = "height:390px; ">
+         
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Adresse Parc:</div>
+             
+            <div class="card-body" style="overflow: scroll;">
+            {% for parcL in list_delete %}
+             <a class="list-group-item list-group-item-action" href="{% url 'demande_suppression' %}">
+              <p >{{parcL.adresse}}</p> 
+              </a>
+             {% endfor %}
+             {% for parcL in  list_err %}
+             <a class="list-group-item list-group-item-action" href="{% url 'demande_suppression' %}">
+              <p >{{parcL.adresse}}</p> 
+              </a>
+             {% endfor %}
+              {% for parcL in  list_normal %}
+             <a class="list-group-item list-group-item-action" href="{% url 'demande_suppression' %}">
+              <p>{{parcL.adresse}}</p> 
+              </a>
+             {% endfor %}
+
+              <canvas id="myPieChart" width="100%" height="90"></canvas>
+            </div>
+           
+            <div class="card-footer small text-muted"></div>
+          </div>
+         
+          
+
+          </div>
+          </div>

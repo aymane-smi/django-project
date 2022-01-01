@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="container">
+	<div class="card">
+	  <div class="card-header">
+	    Suppression de Parc "<strong>{{nom}}</strong>"
+	  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">La suppression du Parc sera éxecuté par l'administrateur</h5>
+	    <p class="card-text">Voulez-vous enovyer une demande pour supprimer le Parc!?</p>
+	    <form method="POST" action="/parc/delete">
+			{%csrf_token%}
+			<input type="submit" value="supprimer" class="btn btn-danger">
+		</form>
+	  </div>
+	</div>
+</div>
+{%endblock%}

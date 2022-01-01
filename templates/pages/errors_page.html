@@ -1,0 +1,51 @@
+{% extends 'baseadmin.html' %}
+
+{% block content %}
+{%if not list_errors %}
+ <div class="container-fluid bg-danger text-white" style="height:40px"><h4> pas de Demande Du suppression</h4>
+  </div>
+{%else%}
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+<div class="row d-flex align-align-items-stretch m-lg-5">
+{% for err in list_errors %}
+<div class="card ofsset-md-1 mt-5  m-lg-1 m-4 " style="width: 18rem;" >
+
+  <div class="card-body">
+    <h5 class="card-title text-center">{{err.nom_parc}}</h5>
+    <p class="card-text"> Gestionnaire : {{err.user.first_name}} {{err.user.last_name}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"> <i class="fas fa-hdd"></i> Memory : {{err.nbr_dd}} </li>
+    <li class="list-group-item"><i class="fas fa-tv"></i> System d'exploitation: {{err.nbr_os}}</li>
+    <li class="list-group-item"><i class="fas fa-memory"></i> Ram: {{err.nbr_ram}}</li>
+    <li class="list-group-item"><i class="fas fa-power-off"></i> Alimentation : {{err.nbr_af}}</li>
+    <li class="list-group-item"><i class="fas fa-paperclip"></i> Others: {{err.nbr_autre}}</li>
+    
+  </ul>
+  <div class="card-body">
+    <form action="{% url 'delete_error' err.id %}" method="post" class="d-inline">
+         {% csrf_token %}
+            <button type="submit" class="btn">
+               <i class="fas fa-trash-alt fa-lg text-danger float-right "></i>
+            </button>
+          </form>
+           <form action="{% url 'pfd-views' err.id %}" method="post" class="d-inline">
+         {% csrf_token %}
+            <button type="submit" class="btn">
+               <i class="fas fa-print  fa-lg text-primary  float-right "></i>
+            </button>
+          </form>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+<a href="{% url 'pfd-all-views' %}" ><hr> <button class="btn btn-primary"> Print All </button>  </a>
+</div>
+</div>
+ 
+
+{%endif%}
+{% endblock %}

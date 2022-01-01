@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container">
+	<ul class="list-group">
+	  <li class="list-group-item"><span class="font-weight-bold">Nom de la machine: </span>{{object.nom}}</li>
+	  <li class="list-group-item"><span class="font-weight-bold">problème(s) RAM: </span>
+	  	{%if object.probleme_ram is none%} 
+	  	pas de probelème
+	  	{%else%}
+	  		{{object.probleme_ram}}
+	  	{%endif%}
+	  </li>
+	  <li class="list-group-item"><span class="font-weight-bold">problème(s) OS: </span>
+	  	{%if object.probleme_os is none%} 
+	  		pas de problème de système d'exploitation
+	  	{%else%}
+	  		{{object.probleme_os}}
+	  	{%endif%}
+	  </li>
+	  <li class="list-group-item"><span class="font-weight-bold">problème(s) disque dur: </span>
+	  	{%if object.probleme_dd is none%} 
+	  		pas de problème de disque dur
+	  	{%else%}
+	  		{{object.probleme_dd}}
+	  	{%endif%}
+	  </li>
+	  <li class="list-group-item"><span class="font-weight-bold">problème(s) alimentation/affichage: </span>
+	  	{%if object.probleme_alimentation_affichage is none%} 
+	  		pas de problème de affichage ou d'alimentation
+	  	{%else%}
+	  		{{object.probleme_alimentation_affichage}}
+	  	{%endif%}
+	  </li>
+	  <li class="list-group-item"><span class="font-weight-bold">autre(s) problème(s): </span>
+	  	{%if object.autre_probleme is none%} 
+	  		pas de problème d'autre problèmes'
+	  	{%else%}
+	  		{{object.autre_probleme}}
+	  	{%endif%}
+	  </li>
+	  <li class="list-group-item"><span class="font-weight-bold">date d'ajout de la machine: </span><span class="font-italic">{{object.date_creation }}</span></li>
+	</ul>
+</div>
+{%endblock content%}

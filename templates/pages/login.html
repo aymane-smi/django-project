@@ -1,0 +1,31 @@
+{% extends 'baselogin.html' %}
+{% block content %}
+<div class="wrapper">
+		<section class="form signup">
+			<header>Login</header>
+			{% if error %}
+			<h4>{{error}}</h4>
+			{% endif %}
+			<form method="POST">
+             {% csrf_token %}
+      	<div class="feild input">
+      		<label>Username</label>
+      		<input type="text" placeholder="enter your username" name="username">
+      	</div>
+      	<div class="feild input">
+      		<label>Password</label>
+      		<input type="password" placeholder="password" id="password" name="password">
+                  <span id="toggle">
+                <i class="fa fa-eye" aria-hidden="true"></i> </span>
+      	</div>
+      	
+      	<div class="feild button">
+      	
+      		<input type="submit" value="Login">
+      	</div>
+      
+		</form>	
+		</section>
+</div>
+
+{% endblock%}

@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Invoice</title>
+	 <link rel="stylesheet" type="text/css" href="{% static 'css\pdf.css'%}">
+    <style> .up1 {
+   background-color: black;
+   width: 100%;
+   height: 60px;
+   text-align: center;
+   padding-bottom: 10px;
+   color: whitesmoke;
+   padding-top: 10px;
+ } 
+ .upside {
+   display: grid;
+   grid-gap: 50px;
+   grid-template-columns: 1fr 1fr;
+ }
+
+ .upside2 {
+   width: 400px;
+   float: right;
+   text-align: left;
+   padding-left: 20px;
+ }
+ </style>
+	</head>
+	<body>
+	<div class="up1">
+	<center><h2>MON PARC</h2></center>
+	</div>
+  <div class="upside">
+	<div class="upside2">
+  <br>
+	<p>{{One.nom_parc}}</p>
+	<p>{{One.user.first_name}} {{One.user.last_name}}</p>
+	<p>{{One.adresse}}</p>
+	</div>
+  </div>
+  {% for parcL in machine %}
+  <div >
+  {%if not parcL.probleme_ram and   not parcL.probleme_dd and not  parcL.probleme_os and not parcL.probleme_alimentation_affichage and not parcL.autre_probleme %}
+{%else%}
+<h5>Machine {{parcL.nom}}:</h5>
+   {%if  parcL.probleme_ram %}
+  <h3> Ram:</h3>
+  <li>  {{parcL.probleme_ram}} </li>
+  {%endif%}
+
+  {%if  parcL.probleme_dd %}
+  <h3> Disque Dur:</h3>
+  <li>  {{parcL.probleme_dd}} </li>
+  {%endif%}
+
+  {%if  parcL.probleme_os %}
+  <h3> System d'exploitation :</h3>
+  <li>  {{parcL.probleme_os}} </li>
+  {%endif%}
+
+  {%if   parcL.probleme_alimentation_affichage %}
+
+  <h3> Allimentation:</h3>
+  <li>  {{parcL.probleme_alimentation_affichage}} </li>
+
+  {%endif%}
+
+  {%if   parcL.autre_probleme %}
+  <h3> Autre Probléme:</h3>
+  <li>  {{parcL.autre_probleme|linebreaks}} </li>
+  {%endif%}
+  <br>
+   <hr>
+   <br>
+	</div>
+  {%endif%}
+  {% endfor %}
+ 
+ 
+	</body>
+</html>

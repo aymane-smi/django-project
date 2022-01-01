@@ -1,0 +1,51 @@
+{% extends 'baseadmin.html' %}
+{% block content %}
+{% include 'parts/upbar.html' %}
+{% if not list_sup %}
+  <h4> is empty .</h4>
+  <div class="container-fluid bg-danger">
+  </div>
+
+{% else %}
+   <div class="content-wrapper">
+    <div class="container-fluid">
+<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Table de les demande de suppression:</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nom de parc</th>
+                  <th>Gestionnaire</th>
+                  <th> Adresse</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for sup in list_sup %}
+                <tr>
+
+                 <td>{{sup.nom_parc}} </td>
+                <td> {{sup.user.first_name}} {{sup.user.last_name}} </td>
+                <td> {{sup.adresse}} </td>
+                 <td> 
+         <form action="{% url 'delete_parc' sup.id %}" method="post" class="d-inline">
+         {% csrf_token %}
+            <button type="submit" class="btn">
+               <i class="fas fa-trash-alt fa-lg text-danger float-right "></i>
+            </button>
+          </form>
+              </td>
+                </tr> 
+                {% endfor %}  
+              </tbody>
+            </table>
+            <div class="card-footer small text-muted"></div>
+          </div>
+        </div>
+        </div>
+</div>
+{% endif %}
+{% endblock  %}

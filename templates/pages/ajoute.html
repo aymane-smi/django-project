@@ -1,0 +1,54 @@
+{% extends 'baseadmin.html' %}
+{% block content %}
+<center>
+    <div class="content-wrapper " style="width: 55%; text-align:left;">
+
+        <div class="card mb-6">
+            <div class="card-header">
+                <i class="fas fa-map-marked"></i> Ajouter Parc
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>firstname :</label>
+                            <input type="text" class="form-control" name="prenom">
+                        </div>
+                        <div class="form-group">
+                            <label>lastname :</label>
+                            <input type="text" class="form-control" name="nom">
+                        </div>
+                        <div class="form-group">
+                            <label>username :</label>
+                            <input type="text" class="form-control" name="usermane">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label>name of parc :</label>
+                            <input type="text" class="form-control" name="nom_parc">
+                        </div>
+                        <div class="form-group">
+                            <label>Adresse of parc :</label>
+                            <input type="text" class="form-control" name="adressparc">
+                        </div>
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-footer small text-muted"></div>
+        </div>
+    </div>
+
+
+    </div>
+</center>
+
+{% endblock %}

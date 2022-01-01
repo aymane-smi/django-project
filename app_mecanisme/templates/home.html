@@ -1,0 +1,125 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="content-wrapper">
+    <div class="container">
+       <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+              	<h1>
+              		<i class="bi bi-map"></i>
+              	</h1>
+              </div>
+              <div class="mr-5">
+   				<p>
+              		<strong>Adresse du Parc:</strong>{{parc.adresse}}
+              	</p>
+              </div>
+      </div>
+          </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+              	<h1>
+              		<i class="bi bi-person"></i>
+              	</h1>
+              </div>
+              <div class="mr-5">
+   				<p>
+              		<strong>Chef du Parc:</strong>
+              		{{user.username}}
+              	</p>
+              </div>
+      </div>
+          </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-info o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+              	<h1>
+              		<i class="bi bi-laptop"></i>
+              	</h1>
+              </div>
+              <div class="mr-5">
+   				<p>
+              		<strong>Nombre de machines disponibles:</strong>
+              		{{parc.nbr_machine}}
+              	</p>
+              </div>
+      </div>
+          </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+              	<h1>
+              		<i class="bi bi-bug"></i>
+              	</h1>
+              </div>
+              <div class="mr-5">
+   				<p>
+              		<strong>Nombre de machines non-fonctionable:</strong>
+              		{{parc.nbr_err}}
+              	</p>
+              </div>
+      </div>
+          </div>
+            </div>
+          </div>
+        </div>
+    </div>
+          </div>
+        </div>
+    </div>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-6" style="height: 70%;">
+    			<div class="card mb-3" style="width: 112%;">
+	            <div class="card-header">
+	              <i class="fa fa-bar-chart"></i> location de mon parc</div>
+	            <div class="card-body">
+	              <div class="row">
+	              	<div class="embed-responsive embed-responsive-21by9">
+					  <iframe src="/map" class="embed-responsive-item"></iframe>
+					</div>
+	                </div>
+	              </div>
+	              <div class="card-footer small text-muted"></div>
+	            </div>
+    		</div>
+    		<div class="col-sm-6">
+    			<div class="card" style="margin-left:7%; width:90%;">
+			   		<div class="card-body">
+					    <h5 class="card-title">
+					    	<i class="bi bi-pin-fill"></i>  Fonctionnalité du parc:
+					    </h5>
+					    <p class="card-text">
+					    	click pour: <!-- Les Listes d'étudiants/enseignats -->
+					    	<div class="text-center">
+					    		<p>
+					    			<a href="/machine/views" class="btn btn-info" style="width:40%;">
+					    				<i class="bi bi-laptop-fill"></i>
+					    				voir les machines
+					    			</a>
+					    		</p>
+					    		<p>
+					    			<a href="/parc/delete" class="btn btn-danger" style="width:40%;" >
+					    				<i class="bi bi-x-circle"></i>
+					    				supprimer mon Parc
+					    			</a>
+					    		</p>
+					    	</div>
+					    </p>
+			  		</div>
+    			</div>   	
+   			</div>
+    	</div>
+    </div>
+	</div>
+    </div>
+{%endblock content%}
